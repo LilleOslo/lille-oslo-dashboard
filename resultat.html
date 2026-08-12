@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="no"><head>
+  <meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lille Oslo Kaffebrenneri – Resultat 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+ --bg:#f7f2ea; --bg2:#efe7da; --card:#fffdf9; --ink:#33271c; --mut:#94856f;
+ --line:#ece2d2; --acc:#bf6b38; --acc-soft:#f6e7d8; --acc-bd:#e8c8aa;
+ --good:#3f8f5f; --good-soft:#e6f1e6; --bad:#cc5f44; --bad-soft:#f8e6df;
+ --warn:#c9962f; --warn-soft:#f6edd6; --blue:#7a94c4;
+ --shadow:0 1px 2px rgba(80,55,30,.05), 0 8px 24px rgba(80,55,30,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg),var(--bg2) 680px);background-attachment:fixed;color:var(--ink);
+ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:40px 32px 56px;max-width:1080px;margin:0 auto;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.head{margin-bottom:18px}
+h1{font-size:32px;font-weight:750;letter-spacing:-.6px;display:flex;align-items:center;gap:13px}
+h1 .cup{font-size:30px}
+.sub{color:var(--mut);font-size:14px;margin-top:12px;font-weight:450}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.wait{background:linear-gradient(135deg,#fff5ea,var(--warn-soft));border:1px solid #e6cd93;border-radius:14px;padding:13px 18px;margin:18px 0;font-size:13px;color:#8a6a1f;font-weight:500;display:flex;gap:10px;align-items:flex-start}
+.wait b{color:#6d5215}
+.callout{border-radius:20px;padding:20px 22px;margin:16px 0;box-shadow:var(--shadow)}
+.callout .l{font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:750}
+.callout .t{font-size:15px;margin-top:10px;line-height:1.55;font-weight:450;color:var(--ink);letter-spacing:-.1px}
+.callout .t p{margin:0 0 9px}.callout .t p:last-child{margin-bottom:0}
+.callout-mnd{background:linear-gradient(135deg,#f4f8f1,#e9f1e6);border:1px solid #cfe0cf}
+.callout-mnd .l{color:var(--good)}
+.navtabs{display:flex;gap:8px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.navtab{padding:11px 22px;font-size:14px;font-weight:650;color:var(--mut);text-decoration:none;border-bottom:2.5px solid transparent;margin-bottom:-1px;letter-spacing:-.2px}
+.navtab.on{color:var(--acc);border-bottom-color:var(--acc)}
+.navtab:hover{color:var(--acc)}
+@media(max-width:720px){.navtab{padding:10px 16px;font-size:13px}}
+.mrow{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:22px 0 6px;flex-wrap:wrap}
+.mpick{display:flex;gap:6px;flex-wrap:wrap}
+.mchip{padding:7px 15px;border-radius:11px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600;color:var(--mut);cursor:pointer}
+.mchip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.mchip.dis{opacity:.38;cursor:default}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:16px 0 6px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--mut)}
+.kpi.k-good::before{background:var(--good)}.kpi.k-warn::before{background:var(--warn)}.kpi.k-bad::before{background:var(--bad)}
+.kpi .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.6px;font-weight:600}
+.kpi .v{font-size:30px;font-weight:750;margin-top:12px;letter-spacing:-1px}
+.kpi.k-good .v{color:var(--good)}.kpi.k-warn .v{color:var(--warn)}.kpi.k-bad .v{color:var(--bad)}
+.kpi .s{font-size:12.5px;margin-top:5px;color:var(--mut)}
+.kpi .tgt{font-size:10.5px;margin-top:9px;color:var(--mut);opacity:.85}
+.hero{background:linear-gradient(135deg,#3a2d20,#5a4128);color:#fff5ea;border:1px solid #6b4e2e;border-radius:16px;padding:16px 22px;margin:16px 0;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hero .l{color:#e8c8aa;font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;font-weight:750}
+.hero .oms{font-size:30px;font-weight:780;letter-spacing:-1px;margin-top:3px;line-height:1}
+.hero-r{display:flex;gap:10px;flex-wrap:wrap}
+.hero-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:9px 13px;min-width:120px}
+.hero-stat .hl{color:#e8c8aa;font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;font-weight:600}
+.hero-stat .hv{font-size:19px;font-weight:750;margin-top:3px;letter-spacing:-.4px}
+.hero .hgood{color:#8fd6a5}.hero .hbad{color:#f0a68c}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin-bottom:20px;box-shadow:var(--shadow)}
+.panel h2{font-size:15px;font-weight:680;margin-bottom:6px;color:var(--ink);letter-spacing:-.2px}
+.panel h2 .hint{font-weight:450;color:var(--mut);font-size:12.5px;letter-spacing:0}
+.sec{font-size:13px;font-weight:700;margin:34px 4px 16px;color:var(--mut);text-transform:uppercase;letter-spacing:1px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.two .panel{margin-bottom:0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--mut);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.6px}
+tfoot td{font-weight:750;border-top:2px solid var(--line);border-bottom:none}
+.mini{font-size:10.5px;color:var(--mut);font-weight:500}
+.pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10.5px;font-weight:650}
+.pill-t{background:var(--acc-soft);color:var(--acc)}
+.pill-f{background:var(--good-soft);color:var(--good)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:7px;vertical-align:middle}
+.note{font-size:12.5px;color:var(--mut);line-height:1.55;margin-top:16px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--line)}
+.xcheck{display:flex;align-items:center;gap:10px;margin-top:14px;padding:11px 14px;border-radius:12px;font-size:12.5px;font-weight:500}
+.xok{background:var(--good-soft);color:#2c6e46;border:1px solid #cfe0cf}
+.xwarn{background:var(--warn-soft);color:#8a6a1f;border:1px solid #e6cd93}
+.statline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+.stat .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.6px;font-weight:600}
+.stat .v{font-size:23px;font-weight:730;margin-top:8px;letter-spacing:-.5px}
+.stat .s{font-size:12px;color:var(--mut);margin-top:4px}
+.hide{display:none!important}
+@media(max-width:820px){.grid5{grid-template-columns:1fr 1fr}.statline{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){
+ body{padding:24px 16px 40px}h1{font-size:24px}h1 .cup{font-size:22px}
+ .two{grid-template-columns:1fr}.panel{padding:19px}th,td{padding:8px 7px;font-size:12px}
+}
+</style></head><body>
+<div class="navtabs"><a class="navtab" href="index.html">&#9749; Omsetning</a><a class="navtab on" href="resultat.html">&#128202; Resultat</a></div>
+<div class="head">
+<h1><span class="cup">&#9749;</span> Lille Oslo Kaffebrenneri</h1>
+<div class="sub">Månedlig resultat 2026 &middot; kostnader som andel av omsetning &middot; oppdatert 12.08.2026 15:52</div>
+</div>
+
+<div class="mrow">
+ <div class="mpick" id="mpick"></div>
+ <div class="mini">Basis: netto driftsinntekter (ekskl. mva) &middot; alle fire inntektskilder</div>
+</div>
+
+<div class="wait" id="wait" style="display:none"><span>&#8987;</span><div id="waittxt"></div></div>
+
+<div class="hero" id="hero">
+ <div><div class="l">Driftsresultat &middot; <span id="hmnd"></span></div><div class="oms" id="hres">–</div></div>
+ <div class="hero-r">
+  <div class="hero-stat"><div class="hl">Driftsinntekter</div><div class="hv" id="hinn">–</div></div>
+  <div class="hero-stat"><div class="hl">Sum kostnader</div><div class="hv" id="hkost">–</div></div>
+  <div class="hero-stat"><div class="hl">Resultatgrad</div><div class="hv" id="hgrad">–</div></div>
+ </div>
+</div>
+
+<div class="grid5" id="kpis"></div>
+
+<div class="callout callout-mnd" id="analyse" style="display:none"><div class="l">&#128202; Månedsanalyse &middot; <span id="hmnd2"></span></div><div class="t" id="analysetxt"></div></div>
+
+<div class="panel" id="innpanel"><h2>Inntektskilder <span class="hint">&middot; fire kilder, kr og % av total</span></h2>
+ <canvas id="innchart" height="70"></canvas>
+ <table id="inntbl" style="margin-top:16px"><thead><tr><th>Kilde</th><th>Kr</th><th>% av total</th></tr></thead><tbody></tbody></table>
+ <div id="kafexcheck"></div>
+</div>
+
+<div class="panel" id="wfpanel"><h2>Slik blir omsetningen til resultat <span class="hint">&middot; hvor krona tar veien</span></h2>
+ <canvas id="wfall" height="112"></canvas></div>
+
+<div class="two">
+ <div class="panel" id="mlinepanel"><h2>Kostnads-%-utvikling <span class="hint">&middot; måned for måned</span></h2><canvas id="mline" height="150"></canvas></div>
+ <div class="panel" id="plpanel"><h2>Resultatregnskap <span class="hint">&middot; kr og % av omsetning</span></h2>
+  <table id="pl"><thead><tr><th>Post</th><th>Kr</th><th>% av oms.</th></tr></thead><tbody></tbody></table></div>
+</div>
+
+<div class="panel" id="lagerpanel"><h2>Varelager <span class="hint">&middot; varetelling ved månedsslutt</span></h2>
+ <div class="statline" style="margin-bottom:0">
+  <div class="stat"><div class="l">Varelager (UB)</div><div class="v" id="l_ub">–</div><div class="s">talt ved månedsslutt</div></div>
+  <div class="stat"><div class="l">Lagerendring</div><div class="v" id="l_endr">–</div><div class="s" id="l_endr_s">mot forrige måned</div></div>
+  <div class="stat"><div class="l">Varekjøp</div><div class="v" id="l_kjop">–</div><div class="s">innkjøp i måneden</div></div>
+  <div class="stat"><div class="l">Varekost</div><div class="v" id="l_kost">–</div><div class="s">Tripletex (fasit)</div></div>
+ </div>
+ <div id="lagerxcheck"></div>
+ <div id="lagerbreak" style="margin-top:18px"><canvas id="lagchart" height="120"></canvas></div>
+</div>
+
+<script>
+const D={"maaneder": [{"maaned": "2026-06", "mi": 6, "navn": "Juni 2026", "kort": "Jun", "pl": {"inntekt": {"kafe": 292736.0, "bedrift": 133328.0, "finn": 84480.0, "medlem": null}, "driftsinntekter": 510544.0, "varekost": 156496.0, "varekjop": 169289.0, "lager_ub": 18553.38, "lager_ib": null, "lonnskostnad": 167601.0, "husleie": 68724.0, "andre_kostnader": 103618.0, "driftsresultat": 14105.0, "kafe_tracker_brutto": 358355.0, "kilde": "Tripletex resultatrapport juni (per konto)", "har_pl": true}, "bemanning": {"sumT": 664.66, "sumL": 178943.94, "n": 12, "tlT": 607.16, "tlL": 126193.94, "tlrate": 208, "blended": 269, "fastL": 52750.0, "timeL": 126193.94, "sluttL": 0, "roller": [{"navn": "Barista", "timer": 572.2}, {"navn": "Fastlønn", "timer": 57.5}, {"navn": "Roastery", "timer": 30.5}, {"navn": "Ledere", "timer": 4.5}], "ansatte": [{"ansatt": "Cathrine Marvoll Johnsen", "rolle": "Fastlønn (barista/admin)", "type": "fastlonn", "timer": 57.5, "lonn": 52750.0}, {"ansatt": "Frida Harridsleff", "rolle": "Barista", "type": "timelonn", "timer": 166.6, "lonn": 34542.33}, {"ansatt": "Mirjam Eszter Palfai", "rolle": "Barista", "type": "timelonn", "timer": 120.22, "lonn": 24644.42}, {"ansatt": "Emma Marvoll Berntsen", "rolle": "Barista", "type": "timelonn", "timer": 85.68, "lonn": 17565.08}, {"ansatt": "Ingrid Tuft Søyland", "rolle": "Barista", "type": "timelonn", "timer": 43.17, "lonn": 8849.17}, {"ansatt": "Marita Bratland Bakkedal", "rolle": "Barista", "type": "timelonn", "timer": 37.92, "lonn": 8200.0}, {"ansatt": "Mina Rosetta Sandkvist Wilson", "rolle": "Barista", "type": "timelonn", "timer": 39.12, "lonn": 8018.92}, {"ansatt": "Ash Matthews", "rolle": "Barista+Roastery", "type": "timelonn", "timer": 30.47, "lonn": 6597.17}, {"ansatt": "Diana Islamova", "rolle": "Barista", "type": "timelonn", "timer": 32.15, "lonn": 6590.75}, {"ansatt": "Ask Wasstøl", "rolle": "Barista", "type": "timelonn", "timer": 25.6, "lonn": 5241.6}, {"ansatt": "Kaja Statle Skjørten", "rolle": "Barista", "type": "timelonn", "timer": 21.7, "lonn": 4448.5}, {"ansatt": "Magnus Egerdahl Nørsett", "rolle": "Ledere", "type": "timelonn", "timer": 4.53, "lonn": 1496.0}]}, "varelager": [{"kategori": "Sjokolade", "verdi": 5782.33}, {"kategori": "Vin og øl", "verdi": 5760.63}, {"kategori": "Melk og alternativer", "verdi": 1501.41}, {"kategori": "Annet", "verdi": 1423.31}, {"kategori": "Kaffe - bøtter", "verdi": 1092.15}, {"kategori": "Te", "verdi": 928.5}, {"kategori": "Mat", "verdi": 769.77}, {"kategori": "Kaffe - 250g poser", "verdi": 548.67}, {"kategori": "Sukker og krydder", "verdi": 352.37}, {"kategori": "Alkoholfri drikke og mikser", "verdi": 277.65}, {"kategori": "Snacks (kveld)", "verdi": 116.59}], "analyse": "Juni ga et driftsresultat på 14 105 kr, en resultatgrad på 2,8 % av driftsinntekter på 510 544 kr. Inntektene hviler nå på tre bein: kafédriften står for 57 % (292 736 kr), salg av kaffebønner og leveranse for 26 % (133 328 kr) og baristatimer til Finn.no for 17 % (84 480 kr) – nær halvparten av omsetningen kommer altså utenfor disken. Kostnadsbildet er sunnere enn kafétallene alene skulle tilsi: personalkosten lander på 32,8 % fordi mye av bemanningen også skaper fakturerbar inntekt gjennom Finn og leveranse, og varekosten på 30,7 % ligger rett på målet. Husleien utgjør 13,5 %. Det som tynger resultatet er andre kostnader på hele 20,3 %, der en enkeltpost på 46 877 kr (annen kostnad, ikke fradragsberettiget) og avskrivninger på 18 509 kr er de klart største – her ligger den tydeligste muligheten til å løfte bunnlinjen. Kafétallet er avstemt mot omsetnings-dashbordet og treffer på under 50 kroner. Retningen er riktig med tre inntektsstrømmer i drift, men marginen er foreløpig tynn og følsom for de store enkeltpostene under andre kostnader."}], "aktiv": "2026-06", "terskel": {"varekost": {"good": 0.3, "warn": 0.35, "lav_er_bra": true}, "personalkost": {"good": 0.35, "warn": 0.45, "lav_er_bra": true}, "husleie": {"good": 0.12, "warn": 0.18, "lav_er_bra": true}, "andre": {"good": 0.12, "warn": 0.18, "lav_er_bra": true}, "resultat": {"good": 0.1, "warn": 0.03, "lav_er_bra": false}}, "mnd_pct": {"labels": ["Jun"], "varekost": [30.7], "personalkost": [32.8], "husleie": [13.5], "andre": [20.3], "resultat": [2.8]}, "mnd_kort": ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"], "oppdatert": "12.08.2026 15:52"};
+const kr=n=>n==null?'–':new Intl.NumberFormat('no-NO').format(Math.round(n))+' kr';
+const pct=n=>n==null?'–':new Intl.NumberFormat('no-NO',{maximumFractionDigits:1}).format(n)+' %';
+const t1=x=>x==null?'–':x.toFixed(1).replace('.',',');
+const gr=getComputedStyle(document.documentElement);
+const C={acc:gr.getPropertyValue('--acc').trim(),mut:gr.getPropertyValue('--mut').trim(),
+ line:gr.getPropertyValue('--line').trim(),good:gr.getPropertyValue('--good').trim(),
+ bad:gr.getPropertyValue('--bad').trim(),warn:gr.getPropertyValue('--warn').trim(),
+ blue:gr.getPropertyValue('--blue').trim()};
+document.querySelector('.sub').innerHTML=document.querySelector('.sub').innerHTML.replace('12.08.2026 15:52',D.oppdatert);
+const byId=id=>document.getElementById(id);
+const show=(id,on)=>byId(id).classList.toggle('hide',!on);
+let charts=[];
+function kill(){charts.forEach(c=>c.destroy());charts=[];}
+function paras(txt){
+ if(!txt)return'';
+ const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ const setn=txt.split(/(?<=[.!?])\s+(?=[A-ZÆØÅ«0-9])/).filter(s=>s.trim());
+ const out=[];let buf=[];
+ setn.forEach(s=>{buf.push(s.trim());if(buf.length>=2){out.push(buf.join(' '));buf=[];}});
+ if(buf.length)out.push(buf.join(' '));
+ return out.map(p=>`<p>${esc(p)}</p>`).join('');
+}
+function niva(key,andel){const t=D.terskel[key];if(!t)return'';
+ if(t.lav_er_bra)return andel<=t.good?'k-good':(andel<=t.warn?'k-warn':'k-bad');
+ return andel>=t.good?'k-good':(andel>=t.warn?'k-warn':'k-bad');}
+function tgtLbl(key){const t=D.terskel[key];
+ return t.lav_er_bra?('Mål ≤ '+Math.round(t.good*100)+' %'):('Mål ≥ '+Math.round(t.good*100)+' %');}
+
+const INNKILDER=[{k:'kafe',navn:'Kafé (drift)',col:C.acc},{k:'bedrift',navn:'Bedriftsleveranse',col:C.blue},
+ {k:'finn',navn:'Finn.no (baristatimer)',col:C.good},{k:'medlem',navn:'Medlemskap (Stripe)',col:C.warn}];
+
+// Månedsvelger
+(function(){
+ const harData=new Set(D.maaneder.map(m=>m.maaned));
+ const mp=byId('mpick');
+ D.mnd_kort.forEach((navn,i)=>{
+  const key='2026-'+String(i+1).padStart(2,'0');
+  const b=document.createElement('div');
+  const on=key===D.aktiv, dis=!harData.has(key);
+  b.className='mchip'+(on?' on':'')+(dis?' dis':'');
+  b.textContent=navn;
+  if(!dis)b.onclick=()=>vis(key);
+  mp.appendChild(b);
+ });
+})();
+
+function vis(key){
+ kill();
+ document.querySelectorAll('.mchip').forEach((c,i)=>{
+  c.classList.toggle('on','2026-'+String(i+1).padStart(2,'0')===key);});
+ const mo=D.maaneder.find(m=>m.maaned===key);
+ const pl=mo.pl;
+ byId('hmnd').textContent=mo.navn;
+
+ // ---- P&L ----
+ if(pl.har_pl){
+  byId('wait').style.display='none';
+  const di=pl.driftsinntekter;
+  const sumKost=(pl.varekost||0)+(pl.lonnskostnad||0)+(pl.husleie||0)+(pl.andre_kostnader||0);
+  const res=pl.driftsresultat!=null?pl.driftsresultat:di-sumKost;
+  const g=x=>x==null?null:x/di;
+  byId('hres').textContent=kr(res);byId('hres').className='oms '+(res>=0?'hgood':'hbad');
+  byId('hinn').textContent=kr(di);byId('hkost').textContent=kr(sumKost);
+  byId('hgrad').textContent=pct(g(res)*100);
+  const KPI=[{key:'varekost',navn:'Varekost',kr:pl.varekost},{key:'personalkost',navn:'Personalkost',kr:pl.lonnskostnad},
+   {key:'husleie',navn:'Husleie',kr:pl.husleie},{key:'andre',navn:'Andre kostnader',kr:pl.andre_kostnader},
+   {key:'resultat',navn:'Resultat',kr:res}];
+  byId('kpis').innerHTML=KPI.map(k=>{const a=g(k.kr);const nv=a==null?'':niva(k.key,a);
+   return `<div class="kpi ${nv}"><div class="l">${k.navn}</div><div class="v">${pct(a==null?null:a*100)}</div>
+    <div class="s">${kr(k.kr)}</div><div class="tgt">${tgtLbl(k.key)}</div></div>`;}).join('');
+
+  // Inntektskilder
+  show('innpanel',true);
+  const seg=INNKILDER.map(s=>({...s,v:pl.inntekt[s.k]})).filter(s=>s.v!=null);
+  charts.push(new Chart(byId('innchart'),{type:'bar',data:{labels:[''],datasets:seg.map(s=>(
+   {label:s.navn,data:[s.v],backgroundColor:s.col,stack:'i',borderRadius:3}))},
+   options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>c.dataset.label+': '+kr(c.raw)+' ('+pct(c.raw/di*100)+')'}}},
+    scales:{x:{stacked:true,ticks:{callback:v=>Math.round(v/1000)+'k'}},y:{stacked:true,grid:{display:false}}}}}));
+  byId('inntbl').querySelector('tbody').innerHTML=INNKILDER.map(s=>{const v=pl.inntekt[s.k];
+   return `<tr><td><span class="dot" style="background:${s.col}"></span>${s.navn}</td>
+    <td>${kr(v)}</td><td>${v==null?'–':pct(v/di*100)}</td></tr>`;}).join('')+
+   `<tr style="font-weight:700"><td>Sum driftsinntekter</td><td>${kr(di)}</td><td>100 %</td></tr>`;
+  // Kafé-kryssjekk mot omsetning-dashbordet
+  const xc=byId('kafexcheck');
+  if(pl.kafe_tracker_brutto!=null){
+   const trk=pl.kafe_tracker_brutto, tri=pl.inntekt.kafe;
+   if(tri!=null){const impMva=(trk/tri-1)*100;const ok=impMva>=14&&impMva<=26;
+    xc.className='xcheck '+(ok?'xok':'xwarn');
+    xc.innerHTML=(ok?'&#10003; ':'&#9888; ')+'Kafé-kryssjekk: tracker '+kr(trk)+' brutto vs. Tripletex '+kr(tri)+
+     ' netto → implisitt mva '+pct(impMva)+(ok?' – innenfor forventet (blandet 15–25 %).':' – utenfor forventet, bør sjekkes.');
+   }else{xc.className='xcheck xwarn';
+    xc.innerHTML='&#9888; Kafé fra omsetning-dashboardet: '+kr(trk)+' brutto. Legg inn Tripletex-tallet (inntekt_kafe) for kryssjekk.';}
+  }else{xc.innerHTML='';}
+
+  // Waterfall
+  show('wfpanel',true);show('plpanel',true);
+  const steps=[{navn:'Omsetning',v:di,type:'start'},{navn:'Varekost',v:-(pl.varekost||0),type:'kost'},
+   {navn:'Personalkost',v:-(pl.lonnskostnad||0),type:'kost'},{navn:'Husleie',v:-(pl.husleie||0),type:'kost'},
+   {navn:'Andre',v:-(pl.andre_kostnader||0),type:'kost'},{navn:'Driftsresultat',v:res,type:'res'}];
+  let run=0;const base=[],high=[],col=[];
+  steps.forEach(s=>{if(s.type==='start'){base.push(0);high.push(s.v);run=s.v;col.push(C.acc);}
+   else if(s.type==='res'){base.push(0);high.push(s.v);col.push(s.v>=0?C.good:C.bad);}
+   else{const nn=run+s.v;base.push(nn);high.push(-s.v);run=nn;col.push('rgba(204,95,68,.82)');}});
+  charts.push(new Chart(byId('wfall'),{type:'bar',data:{labels:steps.map(s=>s.navn),
+   datasets:[{data:base,backgroundColor:'transparent',stack:'w'},{data:high,backgroundColor:col,stack:'w',borderRadius:5}]},
+   options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{
+    title:i=>steps[i[0].dataIndex].navn,label:c=>{if(c.datasetIndex===0)return'';const s=steps[c.dataIndex];
+     return kr(s.v)+'  ('+pct(g(Math.abs(s.v))*100)+' av oms.)';}}}},
+    scales:{x:{grid:{display:false},ticks:{font:{size:11},maxRotation:0}},y:{ticks:{callback:v=>Math.round(v/1000)+'k'}}}}}));
+  const rows=[['Driftsinntekter (netto)',di,''],['Varekost',-(pl.varekost||0),g(pl.varekost||0)],
+   ['Personalkost',-(pl.lonnskostnad||0),g(pl.lonnskostnad||0)],['Husleie',-(pl.husleie||0),g(pl.husleie||0)],
+   ['Andre kostnader',-(pl.andre_kostnader||0),g(pl.andre_kostnader||0)],['Driftsresultat',res,g(res)]];
+  byId('pl').querySelector('tbody').innerHTML=rows.map(r=>{const[n,v,a]=r;
+   const strong=n==='Driftsinntekter (netto)'||n==='Driftsresultat';
+   const c=n==='Driftsresultat'?(v>=0?'good':'bad'):'';
+   return `<tr${strong?' style="font-weight:700"':''}><td>${n}</td><td class="${c}">${kr(v)}</td>
+    <td class="${c}">${a===''||a==null?'':pct(a*100)}</td></tr>`;}).join('');
+ }else{
+  byId('wait').style.display='';
+  byId('waittxt').innerHTML='<b>Resultatregnskapet for '+mo.navn+' venter på Tripletex-rapporten.</b> '+
+   'Fyll inn raden for '+mo.maaned+' i resultat_2026.csv (de fire inntektskildene, varekost/varekjøp, lønnskostnad, husleie, andre kostnader) og kjør bygg_resultat.py. Varelager og kafé-omsetning er allerede lagt inn.';
+  byId('hres').textContent='–';byId('hres').className='oms';
+  byId('hinn').textContent='–';byId('hkost').textContent='–';byId('hgrad').textContent='–';
+  byId('kpis').innerHTML=['Varekost','Personalkost','Husleie','Andre kostnader','Resultat'].map(n=>
+   `<div class="kpi"><div class="l">${n}</div><div class="v">–</div><div class="s">venter på Tripletex</div></div>`).join('');
+  // kafé-tracker kan vises selv uten Tripletex
+  if(pl.kafe_tracker_brutto!=null){show('innpanel',true);
+   byId('innchart').classList.add('hide');
+   byId('inntbl').querySelector('tbody').innerHTML=
+    `<tr><td><span class="dot" style="background:${C.acc}"></span>Kafé (drift) – fra omsetning-dashbordet</td><td>${kr(pl.kafe_tracker_brutto)}</td><td class="mini">brutto</td></tr>`+
+    INNKILDER.slice(1).map(s=>`<tr><td><span class="dot" style="background:${s.col}"></span>${s.navn}</td><td>–</td><td>venter</td></tr>`).join('');
+   byId('kafexcheck').innerHTML='';
+  }else{show('innpanel',false);}
+  show('wfpanel',false);show('plpanel',false);
+ }
+
+ // Varelager
+ const harLager=pl.lager_ub!=null||pl.varekjop!=null||pl.varekost!=null;
+ show('lagerpanel',harLager);
+ if(harLager){
+  byId('l_ub').textContent=kr(pl.lager_ub);
+  const endr=(pl.lager_ub!=null&&pl.lager_ib!=null)?pl.lager_ub-pl.lager_ib:null;
+  byId('l_endr').textContent=endr==null?'–':(endr>=0?'+':'')+kr(endr);
+  byId('l_endr').className='v '+(endr==null?'':(endr>=0?'good':'bad'));
+  byId('l_endr_s').textContent=pl.lager_ib!=null?('IB '+kr(pl.lager_ib)):'ingen IB ennå';
+  byId('l_kjop').textContent=kr(pl.varekjop);
+  byId('l_kost').textContent=kr(pl.varekost);
+  const lx=byId('lagerxcheck');
+  if(pl.varekjop!=null&&pl.varekost!=null&&endr!=null){
+   const impl=pl.varekjop-endr;const d=Math.abs(impl-pl.varekost);const ok=d<=Math.max(500,pl.varekost*0.02);
+   lx.className='xcheck '+(ok?'xok':'xwarn');
+   lx.innerHTML=(ok?'&#10003; ':'&#9888; ')+'Avstemming: varekjøp '+kr(pl.varekjop)+' − lagerendring '+kr(endr)+
+    ' = '+kr(impl)+' vs. bokført varekost '+kr(pl.varekost)+(ok?' – stemmer.':' – avvik '+kr(d)+'.');
+  }else{lx.innerHTML='';}
+  // Kategori-nedbrytning av varelageret
+  const vl=mo.varelager;
+  if(vl&&vl.length){show('lagerbreak',true);
+   charts.push(new Chart(byId('lagchart'),{type:'bar',data:{labels:vl.map(k=>k.kategori),
+    datasets:[{data:vl.map(k=>k.verdi),backgroundColor:C.acc,borderRadius:4}]},
+    options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false},
+     tooltip:{callbacks:{label:c=>{const s=vl.reduce((a,b)=>a+b.verdi,0);
+      return kr(c.raw)+' ('+pct(c.raw/s*100)+')';}}}},
+     scales:{x:{ticks:{callback:v=>Math.round(v/1000)+'k'}},y:{grid:{display:false},ticks:{font:{size:10}}}}}}));
+  }else{show('lagerbreak',false);}
+ }
+
+ // Måned-for-måned %
+ if(D.mnd_pct.labels.length){show('mlinepanel',true);
+  charts.push(new Chart(byId('mline'),{type:'line',data:{labels:D.mnd_pct.labels,datasets:[
+   {label:'Varekost',data:D.mnd_pct.varekost,borderColor:C.acc,pointRadius:3,tension:.2},
+   {label:'Personalkost',data:D.mnd_pct.personalkost,borderColor:C.bad,pointRadius:3,tension:.2},
+   {label:'Husleie',data:D.mnd_pct.husleie,borderColor:C.blue,pointRadius:3,tension:.2},
+   {label:'Andre',data:D.mnd_pct.andre,borderColor:C.mut,pointRadius:3,tension:.2},
+   {label:'Resultat',data:D.mnd_pct.resultat,borderColor:C.good,borderWidth:2.5,pointRadius:3,tension:.2}]},
+   options:{responsive:true,plugins:{legend:{labels:{boxWidth:12,font:{size:11}}},
+    tooltip:{callbacks:{label:c=>c.dataset.label+': '+pct(c.raw)}}},
+    scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>v+' %'}}}}}));
+ }else{show('mlinepanel',false);}
+
+ // ---- Månedsanalyse ----
+ const an=byId('analyse');
+ if(mo.analyse){an.style.display='';byId('hmnd2').textContent=mo.navn;byId('analysetxt').innerHTML=paras(mo.analyse);}
+ else{an.style.display='none';}
+}
+vis(D.aktiv);
+</script></body></html>
