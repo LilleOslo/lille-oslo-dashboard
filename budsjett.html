@@ -37,7 +37,8 @@ h1{font-size:32px;font-weight:750;letter-spacing:-.6px;display:flex;align-items:
 .callout .t{font-size:14.5px;margin-top:10px;line-height:1.55}
 .callout .t p{margin:0 0 8px}.callout .t p:last-child{margin:0}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{text-align:right;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td .mini{white-space:normal;max-width:130px;margin-left:auto;line-height:1.35}
 th:first-child,td:first-child{text-align:left}
 th{color:var(--mut);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.6px}
 tr.q td{background:var(--bg);font-weight:650;font-size:12px}
@@ -57,7 +58,7 @@ td.b27{font-weight:700;color:var(--acc)}
 <div class="navtabs"><a class="navtab" href="index.html">&#9749; Omsetning</a><a class="navtab" href="resultat.html">&#128202; Resultat</a><a class="navtab on" href="budsjett.html">&#128197; Budsjett 2027</a></div>
 <div class="head">
 <h1>&#128197; Budsjett 2027</h1>
-<div class="sub">Kafé-omsetning brutto inkl. mva &middot; faktisk 2025 og 2026 &middot; budsjett per måned med sesongjustering &middot; oppdatert 21.11.2026 07:49</div>
+<div class="sub">Kafé-omsetning brutto inkl. mva &middot; faktisk 2025 og 2026 &middot; budsjett per måned med sesongjustering &middot; oppdatert 21.11.2026 07:53</div>
 </div>
 <div class="grid">
  <div class="kpi"><div class="l">Faktisk 2025</div><div class="v" id="k25"></div><div class="s">hele året</div></div>
@@ -69,13 +70,13 @@ td.b27{font-weight:700;color:var(--acc)}
  <div class="leg"><span><i style="background:#d9cbb6"></i>Faktisk 2025</span><span><i style="background:#94856f"></i>Faktisk 2026</span><span><i style="background:repeating-linear-gradient(45deg,#94856f 0 2px,#e9e0d2 2px 5px)"></i>Prognose 2026</span><span><i style="background:#bf6b38"></i>Budsjett 2027</span></div>
  <canvas id="c1" height="110"></canvas></div>
 <div class="panel"><h2>Månedsbudsjett 2027 <span class="hint">&middot; kursiv = prognose for resten av 2026</span></h2><div style="overflow-x:auto"><table id="tbl">
-<thead><tr><th>Måned</th><th>Faktisk 2025</th><th>2026</th><th>Budsjett 2027</th><th>vs 2026</th><th>vs 2025</th><th>Kalender</th><th>Andel av året</th><th>Akk. budsjett</th></tr></thead><tbody></tbody></table></div></div>
+<thead><tr><th>Måned</th><th>Faktisk 2025</th><th>2026</th><th>Budsjett 2027</th><th>vs 2026</th><th>vs 2025</th><th>Sesonggrunnlag</th><th>Andel av året</th><th>Akk. budsjett</th></tr></thead><tbody></tbody></table></div></div>
 <div class="two">
  <div class="panel"><h2>Ukedagsprofil i budsjettet</h2><table id="uk"><thead><tr><th>Ukedag</th><th>Vekt</th><th>Snitt/dag 2027</th></tr></thead><tbody></tbody></table></div>
  <div class="panel"><h2>Forutsetninger og forbehold</h2><ul class="note" id="forb"></ul></div>
 </div>
 <script>
-const D={"mnd": ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"], "m25": [200858, 218796, 279869, 269242, 318974, 303063, 345338, 468041, 337938, 317265, 232353, 227210], "m26f": [179627, 193251, 260494, 241611, 303133, 358355, 433214, 589038, 477551, 412526, 206839, 0], "m26p": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 77579, 277870], "m26": [179627, 193251, 260494, 241611, 303133, 358355, 433214, 589038, 477551, 412526, 284418, 277870], "m27": [188000, 203000, 265000, 263000, 317200, 378700, 465500, 600600, 504500, 436800, 294300, 295000], "t25": 3518947, "t26": 4011089, "t26f": 3655640, "t26p": 355449, "t27": 4211600, "vekst28": 24.4, "siste": "20.11.2026", "komplett": false, "ukeprofil": [{"ukedag": "Mandag", "vekt": 0.68, "snitt27": 8065}, {"ukedag": "Tirsdag", "vekt": 0.67, "snitt27": 7937}, {"ukedag": "Onsdag", "vekt": 0.87, "snitt27": 10217}, {"ukedag": "Torsdag", "vekt": 0.85, "snitt27": 9979}, {"ukedag": "Fredag", "vekt": 1.22, "snitt27": 14357}, {"ukedag": "Lørdag", "vekt": 1.59, "snitt27": 18445}, {"ukedag": "Søndag", "vekt": 1.11, "snitt27": 13029}], "kal": [-0.4, 0.0, -3.1, 3.7, -0.4, 0.6, 2.3, -2.9, 0.6, 0.8, -1.5, 1.1], "paaske27": "28.03", "paaske26": "05.04", "oppdatert": "21.11.2026 07:49"};
+const D={"mnd": ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"], "m25": [200858, 218796, 279869, 269242, 318974, 303063, 345338, 468041, 337938, 317265, 232353, 227210], "m26f": [179627, 193251, 260494, 241611, 303133, 358355, 433214, 589038, 477551, 412526, 206839, 0], "m26p": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 77579, 277870], "m26": [179627, 193251, 260494, 241611, 303133, 358355, 433214, 589038, 477551, 412526, 284418, 277870], "m27": [246000, 262500, 315900, 336900, 390700, 338500, 416100, 536800, 451000, 390400, 263100, 263700], "t25": 3518947, "t26": 4011089, "t26f": 3655640, "t26p": 355449, "t27": 4211600, "vekst28": 24.4, "siste": "20.11.2026", "komplett": false, "ukeprofil": [{"ukedag": "Mandag", "vekt": 0.68, "snitt27": 8037}, {"ukedag": "Tirsdag", "vekt": 0.67, "snitt27": 7900}, {"ukedag": "Onsdag", "vekt": 0.87, "snitt27": 10181}, {"ukedag": "Torsdag", "vekt": 0.85, "snitt27": 9948}, {"ukedag": "Fredag", "vekt": 1.22, "snitt27": 14353}, {"ukedag": "Lørdag", "vekt": 1.59, "snitt27": 18533}, {"ukedag": "Søndag", "vekt": 1.11, "snitt27": 13078}], "kal": [2.1, 0.0, -5.9, 4.3, 2.1, 0.6, 2.3, -2.9, 0.6, 0.8, -1.5, 1.1], "grunn": [256740, 279668, 357733, 344149, 407717, 358355, 433214, 589038, 477551, 412526, 284418, 277870], "kilde": ["2025 × kveldsløft", "2025 × kveldsløft", "2025 × kveldsløft", "2025 × kveldsløft", "2025 × kveldsløft", "2026", "2026", "2026", "2026", "2026", "2026", "2026"], "loeft": 27.8, "loeft_fra": "01.10", "skal": -6.1, "runrate": 4486567, "paaske27": "28.03", "paaske26": "05.04", "oppdatert": "21.11.2026 07:53"};
 const kr=v=>Math.round(v).toLocaleString('nb-NO').replace(/,/g,' ')+' kr';
 const pct=(a,b)=>{const p=(a/b-1)*100;return (p>=0?'+':'')+p.toFixed(1).replace('.',',')+' %';};
 const cls=(a,b)=>a>=b?'good':'bad';
@@ -86,7 +87,8 @@ document.getElementById('k27').textContent=kr(D.t27);
 document.getElementById('k27s').textContent=`+5 % på 2026 · ${kr(D.t27-D.t26)} mer enn i år`;
 document.getElementById('metode').innerHTML=
  `<p>Årsmålet er 2026 + 5 %. ${D.komplett?'2026 er komplett, så budsjettet er låst.':`2026 er faktisk t.o.m. ${D.siste}; resten av året er prognose (samme ukedag i fjor × siste 28 dagers vekst mot i fjor, nå ${D.vekst28>=0?'+':''}${String(D.vekst28).replace('.',',')} %). Budsjettet oppdateres automatisk hver dag og låser seg når desember er rapportert.`}</p>`+
- `<p>Hver måned får samme andel av året som i 2026, justert for kalenderen 2027: antall fredager/lørdager osv., påske (${D.paaske26} i 2026, ${D.paaske27} i 2027 – flytter fra april til mars) og stengte dager. Dagsbudsjettet ligger i budsjett_2027.csv og fordeles med ukedagsprofilen fra kveldsmodellen (kveldsåpent ons–lør).</p>`;
+ `<p>Sesongprofilen er laget for et helt år med kveldsåpent. Januar–mai bygger på 2025-månedene løftet med kveldseffekten (${D.loeft>=0?'+':''}${String(D.loeft).replace('.',',')} % mot i fjor siden ${D.loeft_fra}), fordi januar–mai 2026 ikke hadde kveldsåpent. Juni–desember bygger på 2026. Alt er justert for kalenderen 2027: antall fredager/lørdager osv., påske (${D.paaske27} i 2027) og stengte dager.</p>`+
+ `<p>Med denne profilen ville et helt år på dagens nivå gitt ca. ${kr(D.runrate)}. Årsmålet på +5 % ligger ${String(Math.abs(D.skal)).replace('.',',')} % ${D.skal<0?'under':'over'} dette, så alle måneder er skalert likt ned for å treffe målet. Dagsbudsjettet ligger i budsjett_2027.csv og fordeles med ukedagsprofilen fra kveldsmodellen (kveldsåpent ons–lør).</p>`;
 // graf
 const p26=D.m26p.map(v=>v>0?v:null);
 const ctx=document.getElementById('c1').getContext('2d');
@@ -103,16 +105,16 @@ const tb=document.querySelector('#tbl tbody');let akk=0,q=[0,0,0];
 D.mnd.forEach((m,i)=>{akk+=D.m27[i];q[0]+=D.m25[i];q[1]+=D.m26[i];q[2]+=D.m27[i];
  const v26=D.m26p[i]>0?(D.m26f[i]>0?`${kr(D.m26[i])}<div class="mini">${kr(D.m26f[i])} + <span class="prog">${kr(D.m26p[i])}</span></div>`:`<span class="prog">${kr(D.m26[i])}</span>`):kr(D.m26[i]);
  const kal=D.kal[i];
- tb.innerHTML+=`<tr><td>${m}</td><td>${kr(D.m25[i])}</td><td>${v26}</td><td class="b27">${kr(D.m27[i])}</td><td class="${cls(D.m27[i],D.m26[i])}">${pct(D.m27[i],D.m26[i])}</td><td class="${cls(D.m27[i],D.m25[i])}">${pct(D.m27[i],D.m25[i])}</td><td class="mini">${Math.abs(kal)<0.05?'–':(kal>0?'+':'')+String(kal).replace('.',',')+' %'}</td><td>${(D.m27[i]/D.t27*100).toFixed(1).replace('.',',')} %</td><td>${kr(akk)}</td></tr>`;
+ tb.innerHTML+=`<tr><td>${m}</td><td>${kr(D.m25[i])}</td><td>${v26}</td><td class="b27">${kr(D.m27[i])}</td><td class="${cls(D.m27[i],D.m26[i])}">${pct(D.m27[i],D.m26[i])}</td><td class="${cls(D.m27[i],D.m25[i])}">${pct(D.m27[i],D.m25[i])}</td><td>${kr(D.grunn[i])}<div class="mini">${D.kilde[i]} · kalender ${Math.abs(kal)<0.05?'±0':(kal>0?'+':'')+String(kal).replace('.',',')} %</div></td><td>${(D.m27[i]/D.t27*100).toFixed(1).replace('.',',')} %</td><td>${kr(akk)}</td></tr>`;
  if(i%3==2){tb.innerHTML+=`<tr class="q"><td>${Math.floor(i/3)+1}. kvartal</td><td>${kr(q[0])}</td><td>${kr(q[1])}</td><td>${kr(q[2])}</td><td>${pct(q[2],q[1])}</td><td>${pct(q[2],q[0])}</td><td></td><td>${(q[2]/D.t27*100).toFixed(1).replace('.',',')} %</td><td></td></tr>`;q=[0,0,0];}
 });
-tb.innerHTML+=`<tr class="tot"><td>Hele året</td><td>${kr(D.t25)}</td><td>${kr(D.t26)}</td><td class="b27">${kr(D.t27)}</td><td>${pct(D.t27,D.t26)}</td><td>${pct(D.t27,D.t25)}</td><td></td><td>100 %</td><td>${kr(D.t27)}</td></tr>`;
+tb.innerHTML+=`<tr class="tot"><td>Hele året</td><td>${kr(D.t25)}</td><td>${kr(D.t26)}</td><td class="b27">${kr(D.t27)}</td><td>${pct(D.t27,D.t26)}</td><td>${pct(D.t27,D.t25)}</td><td>${kr(D.grunn.reduce((a,b)=>a+b,0))}</td><td>100 %</td><td>${kr(D.t27)}</td></tr>`;
 document.querySelector('#uk tbody').innerHTML=D.ukeprofil.map(u=>`<tr><td>${u.ukedag}</td><td>${String(u.vekt).replace('.',',')}</td><td>${kr(u.snitt27)}</td></tr>`).join('');
 document.getElementById('forb').innerHTML=[
  'Gjelder kafé-omsetningen (Munu), samme grunnlag som Omsetning-fanen. Kaffebønner/wholesale og Finn-bemanning er ikke med.',
- 'Januar–mai 2026 hadde ikke kveldsåpent. Med kveldsåpent hele 2027 er disse månedene trolig lettere å nå enn sommer og høst.',
+ 'Kveldsløftet er målt fra oktober (ikke sommer) for ikke å overdrive effekten i vintermånedene. Juni–august 2026 hadde ikke kveldsåpent onsdag (startet 12.08), så de er trolig litt lavt anslått.',
  'Engangseffekter i 2026 ligger i grunnlaget: Vink-reelen i juli, sørgeperioden etter Kong Haralds død (aug–sep) og Løkkadagene i september.',
  'Påskedagene (skjærtorsdag, påskeaften, påskedag) er vektet ned 20 %, i tråd med påsken 2026. Stengt 1.1, 17.5 og 24.–26.12.',
- 'Kolonnen «Kalender» viser hvor mye månedens kalender 2027 er bedre/dårligere enn 2026, før totalen skaleres til +5 %.'
+ '«Sesonggrunnlag» er månedens nivå med kveldsåpent før kalenderjustering. «kalender» viser hvor mye kalenderen 2027 er bedre/dårligere enn grunnlagsåret.'
 ].map(t=>`<li>${t}</li>`).join('');
 </script></body></html>
